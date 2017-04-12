@@ -138,6 +138,47 @@ app.post('/registerDevice', function(req, res) {
 	type_req.end();
 });
 
+
+var Client = require("ibmiotf");
+var appClientConfig = {
+    "org" : "ym6wq7",
+    "id" : "fred",
+    "domain": "internetofthings.ibmcloud.com",
+    "auth-key" : "a-ym6wq7-ewvfh4fsze",
+    "auth-token" : "I)YEGs2B+aO*vBUxfW"
+}
+
+var appClient = new Client.IotfApplication(appClientConfig);
+
+appClient.connect();
+
+appClient.on("connect", function () {
+
+    appClient.subscribeToDeviceEvents("iot-phone","fred","+","json");
+    console.log("I am connected");
+
+});
+appClient.on("deviceEvent", function (deviceType, deviceId, eventType, format, payload) {
+
+    console.log("Device Event from :: "+deviceType+" : "+deviceId+" of event "+eventType+" with payload : "+payload);
+
+    //parse json string to json object
+    var obj = JSON.parse(payload);
+
+    //cords
+    var xaccel = obj.d.ax;
+    var yaccel = obj.d.ay;
+    var zaccel = obj.d.az;
+
+    if (xaccel > 1) {
+    	console.log('phone up');
+    }
+
+    console.log(obj.d.ax + " is catfood");
+
+});
+
+
 app.listen(appEnv.port, function() {
 	console.log("server starting on " + appEnv.url);
 });
