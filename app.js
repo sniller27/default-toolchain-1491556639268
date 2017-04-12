@@ -9,6 +9,41 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); // for parsing application/json
 var appEnv = cfenv.getAppEnv();
 
+//test
+// var Client = require("ibmiotf");
+// var appClientConfig = {
+//     "org" : "n4jgo6",
+//     "id" : "juho",
+//     "domain": "internetofthings.ibmcloud.com",
+//     "auth-key" : "a-n4jgo6-7m62kd3nta",
+//     "auth-token" : "OI8i@+uEbf&BVb!1!J"
+// };
+// //authkey og authotken er vidst det samme som apikey og apitoken
+
+// //org på /credentials (samt authkey og auth-token)
+// //id?
+// //{"org":"n4jgo6","apiKey":"a-n4jgo6-7m62kd3nta","apiToken":"OI8i@+uEbf&BVb!1!J"}
+
+// var appClient = new Client.IotfApplication(appClientConfig);
+
+// // appClient.connect();
+
+// appClient.on("connect", function () {
+// //iot phone from Watson
+//     appClient.subscribeToDeviceEvents("iot-phone","juho","+","json");
+
+// });
+// appClient.on("deviceEvent", function (deviceType, deviceId, eventType, format, payload) {
+
+//     console.log("Device Event from :: "+deviceType+" : "+deviceId+" of event "+eventType+" with payload : "+payload);
+
+//     //åbn logfile via termnial og tjek console.log er tilføjet...evt. cf logs johncena (og evt --recent)
+//     //parse payload
+//     //get x,y,z from payload
+// });
+
+
+
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 var config = null;
@@ -30,7 +65,14 @@ var basicConfig = {
 	org: credentials.org,
 	apiKey: credentials.apiKey,
 	apiToken: credentials.apiToken
+
 };
+
+// var basicConfig = {
+// 	org: 'n4jgo6',
+// 	apiKey: 'a-n4jgo6-7m62kd3nta',
+// 	apiToken: 'OI8i@+uEbf&BVb!1!J'
+// };
 
 var options = {
 	host: 'internetofthings.ibmcloud.com',

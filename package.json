@@ -6,6 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "ibmiotf": "latest",
     "body-parser": "^1.14.1",
     "cfenv": "1.0.x",
     "express": "4.12.x",
