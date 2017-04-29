@@ -1,4 +1,6 @@
-# discover-iot-sample
+# This is code provided for an IBM Workshop!
+
+## discover-iot-sample
 
 Sample application for connecting a smartphone to IBM IBM Watson IoT Platform.
 
